@@ -43,10 +43,17 @@ public class MakeAlmostEqualWithMod {
                     their remainders -> 0 0 0 0
                     but the distinct remainders are 1 in this case, i.e
                     so, the LSB when divided by 2 was 0, contains only 1 distinct binary representation of 2 : (00010)
-                    so, if you shift that bit by one position, we get : 4 : (00100) // there is change in one bit so, the remainder will also change and make this process until you find the set with size 2
+                    so, if you shift that bit by one position, we get : 4 : (00100)
                     so if you now divide it
                     array elements ->   2 4 6 8
                     their remainders -> 2 0 2 0 now, 2 distinct remainders, condition is satisfied
+                    The remainder is depended on the number used for division 
+                    The remainder : if divided by 2 : only last bit is the remainder
+                                    if divided by 4 : the last 2 bits are the remainder
+                                        ex : 7%4 = 3 (binary representation of 7 : 0111) last 2 bits are giving us the value of 3
+                                    if divided by 8 : the last 3 bits are the remainder
+                                    .....
+                    so to ensure that the remainders are only 2 distinct elements, we follow this until we find 'x' whose remainder gives only 2 distinct numbers when divided with whole array
                    */
 
                 int siz = in.nextInt(); // taking size as input
@@ -72,6 +79,9 @@ public class MakeAlmostEqualWithMod {
                     else x <<= 1; // reason is mentioned above
                 }
                 out.println(x);
+
+                // Time complexity : O(N*(logN))
+                // space complexity : O(N)+O(x-1) // x is the current value so, at any point, we create the (x-1) different remainders
             }
             out.close();
         } catch (Exception e) {
