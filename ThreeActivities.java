@@ -1,7 +1,7 @@
 import java.util.*;
 import java.io.*;
 
-public class Main {
+public class ThreeActivities {
 
 
     private static final long MAX = (long) 1e9 + 7; // max number for MOD
